@@ -103,6 +103,7 @@ $typography-map: (
 
   //light theme colors
   --md-sys-light-primary-container: #CDE5FF;
+  --md-sys-light-on-primary-container: #001D32;
 
   --md-sys-color-background-light: rgb(248 249 255);
   --md-sys-color-on-background-light: rgb(25 28 32);
@@ -112,6 +113,7 @@ $typography-map: (
 
   //dark theme colors
   --md-sys-dark-primary-container: #090f16;
+  --md-sys-dark-on-primary-container: #76c2f8;
 
   --md-sys-color-background-dark: rgb(17 20 24);
   --md-sys-color-on-background-dark: rgb(225 226 232);
@@ -121,6 +123,7 @@ $typography-map: (
 
   //theme colors
   --md-sys-color-primary-container: light-dark(var(--md-sys-light-primary-container), var(--md-sys-dark-primary-container));
+  --md-sys-color-on-primary-container: light-dark(var(--md-sys-light-on-primary-container), var(--md-sys-dark-on-primary-container));
 
   --md-sys-color-background: light-dark(var(--md-sys-color-background-light), var(--md-sys-color-background-dark));
   --md-sys-color-on-background: light-dark(var(--md-sys-color-on-background-light), var(--md-sys-color-on-background-dark));
@@ -130,6 +133,7 @@ $typography-map: (
 
   //main variables
   --title-color: #006399;
+
 
   --sidebar-width: 156px;
   --gap: 24px;
@@ -747,7 +751,7 @@ section {
         width: 1128px;
         height: 52px;
         place-items: center;
-        color: white;
+        color: var(--md-sys-color-on-primary-container);
       }
 
       h2 {
@@ -757,7 +761,7 @@ section {
         width: 1128px;
         height: 52px;
         place-items: center;
-        color: white;
+        color: var(--md-sys-color-on-primary-container);
       }
 
       h1 {
@@ -767,7 +771,7 @@ section {
         width: 1128px;
         height: 52px;
         place-items: center;
-        color: white;
+        color: var(--md-sys-color-on-primary-container);
       }
 
       .content-container {
