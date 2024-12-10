@@ -137,6 +137,7 @@ $typography-map: (
 
   --sidebar-width: 156px;
   --gap: 24px;
+  --columns: 12;
 }
 
 * {
@@ -153,10 +154,10 @@ html, body {
 
 body {
   display: grid;
-  grid-template-columns: calc(var(--sidebar-width) - var(--gap)) repeat(12, 1fr) calc(var(--sidebar-width) - var(--gap)); //сделать кальк через общую переменную
-  gap: 24px;
+  grid-template-columns: calc(var(--sidebar-width) - var(--gap)) repeat(var(--columns), 1fr) calc(var(--sidebar-width) - var(--gap)); //сделать кальк через общую переменную
+  //gap: 24px;
   background-image: url('./images/f6a90cb182a2ace4cb6fbef124c0b2ff.png');
-  background-position: center;
+  background-position: right;
   background-size: cover;
   background-repeat: no-repeat;
   overflow-x: hidden;
@@ -172,9 +173,9 @@ body {
 }
 
 section {
-  //display: grid;
+  display: grid;
   grid-template-columns: subgrid;
-  grid-column: 2/ span 12;
+  grid-column: 1/ -1;
   color: var(--md-sys-color-on-surface);
 }
 
@@ -183,30 +184,16 @@ section {
   display: grid;
   grid-template-columns: subgrid;
   grid-auto-rows: min-content;
-  //grid-gap: 24px;
   column-gap: 24px;
   row-gap: 0;
   width: 100dvw;
   height: 100dvh;
-  //background-image: url('./images/f6a90cb182a2ace4cb6fbef124c0b2ff.png');
-
-
-  //grid-auto-flow: row;
-  //position: relative;
-  //isolation: isolate;
-
-  //grid-column: 2 / span 12;
-
-  //background-position: center;
-  //background-size: cover;
-  //background-repeat: no-repeat;
 
   header {
     height: 100px;
     display: grid;
-    //grid-template-columns: repeat(12,1fr);
     grid-template-columns: subgrid;
-    grid-column: 1/-1;
+    grid-column: 2/span 12;
     gap: 24px;
     align-items: center;
     @include typography-title-large;
@@ -218,34 +205,24 @@ section {
 
       &__logo {
         display: grid;
-        //grid-template-columns: subgrid;
         grid-column: 1 / span 6;
         align-items: center;
       }
 
       &__nav {
-        //display: grid;
-        //grid-template-columns: subgrid;
-        //grid-template-columns: repeat(3, 1fr);
+        flex-direction: row;
         grid-column: 7 / span 6;
-        align-items: center;
+        place-content: center;
 
         .nav-list {
-          display: grid;
+          display: flex;
+          justify-content: space-between;
           grid-auto-flow: column;
-          grid-column: 7 / 12;
-          //grid-column: -1 / 1;
-          //grid-template-columns: repeat(3, 1fr);
-          //justify-items: ;
-          gap: 91.5px;
+          grid-column: 7 / span 6;
+          align-items: center;
           list-style: none;
-          max-width: 552px;
 
-          .nav-item {
-            //display: grid;
-            //grid-template-columns: subgrid;
-            //grid-column: 7 / span 6;
-          }
+
 
           .nav-link {
             text-decoration: none;
@@ -261,7 +238,7 @@ section {
   .content {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / span 6;
+    grid-column: 2 / span 6;
 
 
     .content-container {
@@ -320,13 +297,13 @@ section {
 .interest-report {
   display: grid;
   grid-template-columns: -1/1;
-
+  column-gap: 24px;
 
   .container {
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2/span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -372,11 +349,12 @@ section {
   grid-template-columns: -1/1;
   width: 100dvw; // Полная ширина окна
   background-color: #2F3033;
+  column-gap: 24px;
 
   .container {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2/span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -411,13 +389,13 @@ section {
 .incident {
   display: grid;
   grid-template-columns: -1/1;
-
+  column-gap: 24px;
 
   .container {
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2/span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -464,33 +442,35 @@ section {
   width: 100dvw; // Полная ширина окна
   margin-left: calc(var(--gap) * -1);
   background-color: #2F3033;
+  column-gap: 24px;
 
   .container {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 6 / span 8;
     align-items: center;
     padding: 100px 0 100px;
 
     //background-color: aqua;
 
     &__text {
-      //display: grid;
+      display: grid;
       grid-template-columns: subgrid;
-      grid-column: 5 / span 12;
+      grid-column: 1 / -1;
 
       p {
         @include typography-body-large;
         display: grid;
         grid-template-columns: subgrid;
-        width: 1128px;
-        height: 52px;
+        //width: 1128px;
+        //height: 52px;
         place-items: center;
         color: white;
       }
 
       .content-container {
         display: grid;
+        grid-column: 1 / -1;
         gap: 16px;
 
 
@@ -504,13 +484,13 @@ section {
 .new-beginning {
   display: grid;
   grid-template-columns: -1/1;
-
+  column-gap: 24px;
 
   .container {
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2 / span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -555,13 +535,13 @@ section {
 .recreation {
   display: grid;
   grid-template-columns: -1/1;
-
+  column-gap: 24px;
 
   .container {
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2 / span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -605,9 +585,9 @@ section {
 .application {
   display: grid;
   grid-template-columns: -1/1;
+  column-gap: 24px;
 
-
-  .container {
+  .main-container {
 
     display: grid;
     row-gap: 50px;
@@ -616,57 +596,63 @@ section {
     align-items: center;
     padding: 100px 0 100px;
     background-color: var(--md-sys-color-primary-container);
-
-    &__image {
+    .container {
       display: grid;
       grid-template-columns: subgrid;
-      grid-column: 1 / span 5;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      border-radius: 16px;
-      background-size: cover;
-      background-position: center;
-      background-image: url('https://s3-alpha-sig.figma.com/img/8b60/af22/f02d84ebb8b268ddabe0443886678db9?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bg9JIYm6TgcJhrGddtSfVsOlNRX3N5G5LrX5drTvIqxk2JfCKGqyfRduiFARqeeSYsNt3NZf8P87cjm35WhAgMo~kpfTNeWXQ0priFs1oJifVkSduEnIwQOLF1yDIcHTTu9452dZidhUspCSa3fEtunibIC0a7kTzurLW8uCkTzq2Av7UzXj~JO2PMzmqpfOgQNMYW0JnwEi~RwgTt0EGyFL0bRYW3YBHG~iEeDvIcgRhOSe-PE8viaXBRjDuCQIxZ4OpTmCpWh4xQS8atpaOaNWdwn5dkMaKYkmp8yIvx69OoT4bCIG1G92Ia8eDlgTlYNkI5N~4s-9fvXAOdoBUQ__');
+      grid-column: 2 / span 12;
+      row-gap: 50px;
 
-    }
-
-    &__text-right {
-      //display: grid;
-      grid-template-columns: subgrid;
-      grid-column: 7 / span 6;
-
-      .content-container {
+      &__image {
         display: grid;
-        gap: 16px;
+        grid-template-columns: subgrid;
+        grid-column: 1 / span 5;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 16px;
+        background-size: cover;
+        background-position: center;
+        background-image: url('https://s3-alpha-sig.figma.com/img/8b60/af22/f02d84ebb8b268ddabe0443886678db9?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bg9JIYm6TgcJhrGddtSfVsOlNRX3N5G5LrX5drTvIqxk2JfCKGqyfRduiFARqeeSYsNt3NZf8P87cjm35WhAgMo~kpfTNeWXQ0priFs1oJifVkSduEnIwQOLF1yDIcHTTu9452dZidhUspCSa3fEtunibIC0a7kTzurLW8uCkTzq2Av7UzXj~JO2PMzmqpfOgQNMYW0JnwEi~RwgTt0EGyFL0bRYW3YBHG~iEeDvIcgRhOSe-PE8viaXBRjDuCQIxZ4OpTmCpWh4xQS8atpaOaNWdwn5dkMaKYkmp8yIvx69OoT4bCIG1G92Ia8eDlgTlYNkI5N~4s-9fvXAOdoBUQ__');
 
-        .title {
-          @include typography-headline-medium;
-          color: var(--title-color);
-        }
+      }
 
-        .content {
-          @include typography-body-large;
+      &__text-right {
+        //display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 7 / span 6;
+
+        .content-container {
+          display: grid;
+          gap: 16px;
+
+          .title {
+            @include typography-headline-medium;
+            color: var(--title-color);
+          }
+
+          .content {
+            @include typography-body-large;
+          }
         }
       }
-    }
 
-    &__text-left {
-      //display: grid;
-      grid-template-columns: subgrid;
-      grid-column: 1 / span 6;
+      &__text-left {
+        //display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 1 / span 6;
 
-      .content-container {
-        display: grid;
-        gap: 16px;
+        .content-container {
+          display: grid;
+          gap: 16px;
 
-        .title {
-          @include typography-headline-medium;
-          color: var(--title-color);
-        }
+          .title {
+            @include typography-headline-medium;
+            color: var(--title-color);
+          }
 
-        .content {
-          @include typography-body-large;
+          .content {
+            @include typography-body-large;
+          }
         }
       }
     }
@@ -678,13 +664,13 @@ section {
 .help {
   display: grid;
   grid-template-columns: -1/1;
-
+  column-gap: 24px;
 
   .container {
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2 / span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -728,13 +714,13 @@ section {
 .slogan-blue {
   display: grid;
   grid-template-columns: -1/1;
-  width: 100dvw; // Полная ширина окна
   background-color: var(--md-sys-color-primary-container);
+  column-gap: 24px;
 
   .container {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2 / span 12;
     align-items: center;
     padding: 100px 0 100px;
 
@@ -791,6 +777,7 @@ section {
   grid-template-columns: -1/1;
   width: 100dvw; // Полная ширина окна
   background-color: #2F3033;
+  column-gap: 24px;
 
   .container {
     display: grid;
@@ -807,13 +794,13 @@ section {
       display: grid;
       gap: 16px;
       grid-template-columns: subgrid;
-      grid-column: 4 / span 6;
+      grid-column: 5 / span 6;
       align-items: center;
 
 
       &__button {
         display: grid;
-        grid-column: 1 / span 6;
+        grid-column: 1 / -1;
 
         button {
 
@@ -844,14 +831,12 @@ section {
 .weyland-logo {
   display: grid;
   grid-template-columns: -1/1;
-  width: 100dvw; // Полная ширина окна
-  //height: 100%;
-  //padding: 93px 0 93px;
+  column-gap: 24px;
 
   .container {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    grid-column: 2 / span 12;
     align-items: center;
     height: 100%;
     padding: 93px 0 93px;
@@ -882,40 +867,42 @@ section {
 .footer {
   display: grid;
   grid-template-columns: subgrid;
-  grid-column: 2/ span 12;
+  grid-column: 1/ -1;
   background-color: #2F3033;
+  column-gap: 24px;
 
   .container {
-    //display: grid;
-    //grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 2 / span 12;
     align-items: center;
     //padding: 100px 0 100px;
 
     //background-color: aqua;
 
-    &__text {
-      //display: grid;
-      //grid-template-columns: subgrid;
-      grid-column: 1 / span 12;
+    .content-container {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 9 / span 4;
 
 
-      p {
-        @include typography-body-medium;
-        display: grid;
-        grid-template-columns: subgrid;
-
-        //place-items: left;
-        color: white;
-        grid-column: 10 / span 3;
-        align-items: center
-      }
-
-      .content-container {
-        display: grid;
-
+      &__text {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1/-1;
         height: 150px;
+        grid-template-columns: subgrid;
+        justify-content: center;
+        p {
+          @include typography-body-medium;
+          //display: grid;
+          //grid-template-columns: subgrid;
 
+          //place-items: left;
+          color: white;
+          //grid-column: 10 / span 3;
+          //align-items: center
+        }
 
       }
     }
