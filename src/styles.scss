@@ -248,12 +248,19 @@ section {
       @include typography-title-medium;
     }
 
-    //@media(width <)
+    @media(width < $breakpoint-phone){
+      grid-column: 2/span 4;
+      padding-top: 10px;
+      @include typography-title-medium;
+    }
 
     .header-container {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: 1/-1;
+      @media(width < $breakpoint-phone){
+        justify-items: center;
+      }
 
       &__logo {
         display: grid;
@@ -261,6 +268,10 @@ section {
         align-items: center;
         @media(width < $breakpoint-tablet){
           grid-column: 1/span 4;
+        }
+        @media(width < $breakpoint-phone) {
+          grid-column: 1/span 4;
+          align-items: center;
         }
       }
 
@@ -270,7 +281,12 @@ section {
 
         @media(width < $breakpoint-tablet){
           grid-column: 5 / span 4;
+        }
 
+        @media(width < $breakpoint-phone){
+          grid-column: 1 / span 4;
+          grid-row: 2 / span 1;
+          align-items: center;
         }
 
         .nav-list {
@@ -281,18 +297,18 @@ section {
           list-style: none;
           @media(width < $breakpoint-tablet){
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
           }
 
-
+          @media(width < $breakpoint-tablet){
+            padding-top: 10px;
+          }
           .nav-link {
             text-decoration: none;
             color: white;
           }
         }
       }
-
-
     }
   }
 
@@ -303,6 +319,10 @@ section {
 
     @media(width < $breakpoint-tablet){
       grid-column: 2 / span 8;
+    }
+
+    @media(width < $breakpoint-phone){
+      grid-column: 2 / span 4;
     }
 
     .content-container {
@@ -326,7 +346,6 @@ section {
         }
 
         button {
-
           background-color: #006399;
           border-radius: 16px;
           border: none;
@@ -362,12 +381,15 @@ section {
 
         @media(width < $breakpoint-tablet){
           grid-column: 1 / -1;
-
         }
 
         .title {
           @include typography-display-large;
           @media(width < $breakpoint-tablet){
+            @include typography-display-medium;
+            text-align: center;
+          }
+          @media(width < $breakpoint-phone){
             @include typography-display-medium;
             text-align: center;
           }
