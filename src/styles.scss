@@ -82,15 +82,6 @@ $typography-map: (
   font-weight: map.get($font-map, "weight");
 }
 
-//@mixin adaptive-font($font-style){
-//  $font-map: map.get($typography-map, $font-style);
-//
-//  line-height: map.get($font-map, "line-height");
-//  font-size: map.get($font-map, "size");
-//  letter-spacing: map.get($font-map, "tracking");
-//  font-weight: map.get($font-map, "weight");
-//}
-
 @mixin display-button($size) {
   line-height: 64px;
   font-size: $size;
@@ -243,7 +234,6 @@ body {
 
   @media(width < $breakpoint-phone) {
     grid-template-columns: var(--phone-sidebar-width_without-gap) repeat(var(--phone-columns), 1fr) var(--phone-sidebar-width_without-gap);
-    //grid-template-columns: repeat(var(--phone-columns), 1fr);
   }
 }
 
@@ -464,10 +454,12 @@ section {
 
     @media(width < $breakpoint-tablet) {
       grid-column: 2/span 8;
+      padding: 50px 0 50px;
     }
 
     @media(width < $breakpoint-phone) {
       grid-column: 1 / -1;
+      padding: 0 0 15px;
     }
 
     .content-container {
@@ -762,9 +754,11 @@ section {
 
     @media(width < $breakpoint-tablet) {
       grid-column: 2/span 8;
+      padding: 50px 0 50px;
     }
     @media(width < $breakpoint-phone) {
       grid-column: 1/span 6;
+      padding: 15px 0 15px;
     }
 
     &__text {
@@ -811,7 +805,7 @@ section {
 .footnote {
   display: grid;
   grid-template-columns: -1/1;
-  width: 100dvw; // Полная ширина окна
+  width: 100dvw;
   margin-left: calc(var(--gap) * -1);
   background-color: #2F3033;
   column-gap: 24px;
@@ -823,12 +817,26 @@ section {
     align-items: center;
     padding: 100px 0 100px;
 
-    //background-color: aqua;
+    @media(width < $breakpoint-tablet) {
+      grid-column: 2/span 8;
+      padding: 50px 0 50px;
+    }
+    @media(width < 680px) {
+      grid-column: 1/span 10;
+    }
+    @media(width < $breakpoint-phone) {
+      grid-column: 1/span 6;
+      padding: 15px 0 15px;
+    }
+
 
     &__text {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: 1 / -1;
+      @media(width < 680px) {
+        padding: 0 10px;
+      }
 
       p {
         @include typography-body-large;
@@ -868,11 +876,28 @@ section {
     padding: 100px 0 100px;
     background-color: var(--md-sys-color-primary-container);
 
+    @media(width < $breakpoint-tablet) {
+      padding: 50px 0 50px;
+    }
+
+    @media(width < $breakpoint-phone) {
+      padding: 0 0 15px;
+    }
+
     .container {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: 2 / span 12;
       row-gap: 50px;
+      @media(width < $breakpoint-tablet) {
+        grid-column: 1 / span 10;
+        padding: 0 10px;
+      }
+      @media(width < $breakpoint-phone) {
+        padding: 0;
+        grid-column: 1/ span 6;
+        grid-template-rows: repeat(2, 1fr);
+      }
 
       &__image {
         display: grid;
@@ -883,14 +908,24 @@ section {
         margin: 0;
         border-radius: 16px;
         background-size: cover;
-        background-position: center;
+        background-position: left;
         background-image: url('images/f02d84ebb8b268ddabe0443886678db9.jpg');
+
+        @media(width < $breakpoint-phone) {
+          grid-column: 1/ span 6;
+          background-position: center;
+          object-fit: cover;
+          width: auto;
+        }
       }
 
       &__text-right {
-        //display: grid;
         grid-template-columns: subgrid;
         grid-column: 7 / span 6;
+        @media(width < $breakpoint-phone) {
+          grid-column: 1 / span 6;
+          padding: 0 10px;
+        }
 
         .content-container {
           display: grid;
@@ -899,18 +934,35 @@ section {
           .title {
             @include typography-headline-medium;
             color: var(--title-color);
+            @media(width < 950px) {
+              @include typography-headline-advance(26px);
+            }
+
+            @media(width < 750px) {
+              @include typography-headline-advance(22px);
+            }
           }
 
           .content {
             @include typography-body-large;
+
+            @media(width < 950px) {
+              @include typography-body-medium;
+            }
+
+            @media(width < 750px) {
+              @include typography-body-small;
+            }
           }
         }
       }
 
       &__text-left {
-        //display: grid;
         grid-template-columns: subgrid;
         grid-column: 1 / span 6;
+        @media(width < $breakpoint-phone) {
+          padding: 0 10px;
+        }
 
         .content-container {
           display: grid;
@@ -919,10 +971,25 @@ section {
           .title {
             @include typography-headline-medium;
             color: var(--title-color);
+            @media(width < 950px) {
+              @include typography-headline-advance(26px);
+            }
+
+            @media(width < 750px) {
+              @include typography-headline-advance(22px);
+            }
           }
 
           .content {
             @include typography-body-large;
+
+            @media(width < 950px) {
+              @include typography-body-medium;
+            }
+
+            @media(width < 750px) {
+              @include typography-body-small;
+            }
           }
         }
       }
@@ -945,10 +1012,17 @@ section {
     align-items: center;
     padding: 100px 0 100px;
 
-    //background-color: aqua;
+    @media(width < $breakpoint-tablet) {
+      grid-column: 1 / span 10;
+      padding: 50px 0 50px;
+    }
+
+    @media(width < $breakpoint-phone) {
+      grid-column: 1 / span 6;
+      padding: 25px 0 25px;
+    }
 
     &__text {
-      //display: grid;
       grid-template-columns: subgrid;
       grid-column: 1 / span 12;
 
@@ -960,6 +1034,13 @@ section {
         height: 52px;
         place-items: center;
         color: var(--md-sys-color-on-primary-container);
+
+        @media(width < 1000px) {
+          @include typography-headline-advance(28px);
+        }
+        @media(width < $breakpoint-tablet) {
+          @include typography-headline-advance(14px);
+        }
       }
 
       h2 {
@@ -970,6 +1051,13 @@ section {
         height: 52px;
         place-items: center;
         color: var(--md-sys-color-on-primary-container);
+
+        @media(width < 1000px) {
+          @include typography-display-small;
+        }
+        @media(width < $breakpoint-tablet) {
+          @include typography-headline-advance(22px);
+        }
       }
 
       h1 {
@@ -980,6 +1068,13 @@ section {
         height: 52px;
         place-items: center;
         color: var(--md-sys-color-on-primary-container);
+
+        @media(width < 1000px) {
+          @include typography-display-medium;
+        }
+        @media(width < $breakpoint-tablet) {
+          @include typography-headline-advance(32px);
+        }
       }
 
       .content-container {
@@ -996,7 +1091,7 @@ section {
 .slogan-button {
   display: grid;
   grid-template-columns: -1/1;
-  width: 100dvw; // Полная ширина окна
+  width: 100dvw;
   background-color: #2F3033;
   column-gap: 24px;
 
@@ -1006,10 +1101,6 @@ section {
     grid-column: 1 / -1;
     align-items: center;
     height: 200px;
-    //padding: 100px 0 100px;
-
-    //background-color: aqua;
-
 
     .content-container {
       display: grid;
@@ -1018,13 +1109,20 @@ section {
       grid-column: 5 / span 6;
       align-items: center;
 
+      @media(width < $breakpoint-tablet) {
+        grid-column: 2 / span 8;
+      }
+
+      @media(width < $breakpoint-phone) {
+        grid-column: 2 / span 4;
+      }
+
 
       &__button {
         display: grid;
         grid-column: 1 / -1;
 
         button {
-
           background-color: #006399;
           border-radius: 16px;
           border: none;
@@ -1041,6 +1139,12 @@ section {
             }
             @media(width < 1220px) {
               @include display-button(26px);
+            }
+            @media(width < $breakpoint-phone) {
+              @include display-button(18px);
+            }
+            @media(width < 440px) {
+              @include display-button(14px);
             }
           }
         }
@@ -1066,10 +1170,15 @@ section {
     align-items: center;
     height: 100%;
     padding: 93px 0 93px;
-    //padding: 100px 0 100px;
 
-    //background-color: aqua;
-
+    @media(width < $breakpoint-tablet) {
+      grid-column: 1 / span 10;
+      padding: 10px 0 10px;
+    }
+    @media(width < $breakpoint-phone) {
+      grid-column: 1 / span 6;
+      padding: 0;
+    }
 
     .content-container {
       display: grid;
@@ -1079,12 +1188,24 @@ section {
       align-items: center;
       justify-items: center;
 
+      @media(width < $breakpoint-tablet) {
+        grid-column: 2 / span 8;
+      }
+      @media(width < $breakpoint-phone) {
+        grid-column: 1 / span 6;
+      }
 
       &__logo {
         display: grid;
-        grid-column: 1 / span 6;
+        grid-column: 1 /-1;
 
+        svg{
+          width: 100dvw;
 
+          @media(width < $breakpoint-tablet) {
+            width: 60dvw;
+          }
+        }
       }
     }
   }
@@ -1102,14 +1223,22 @@ section {
     grid-template-columns: subgrid;
     grid-column: 2 / span 12;
     align-items: center;
-    //padding: 100px 0 100px;
-
-    //background-color: aqua;
+    @media(width < $breakpoint-tablet) {
+      grid-column: 2 / span 10;
+      padding-right: 10px;
+    }
 
     .content-container {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: 9 / span 4;
+      @media(width < 1100px) {
+        grid-column: 1/-1;
+        justify-items: end;
+      }
+      @media(width < $breakpoint-tablet) {
+
+      }
 
 
       &__text {
@@ -1119,16 +1248,27 @@ section {
         height: 150px;
         grid-template-columns: subgrid;
         justify-content: center;
+        @media(width < 1100px) {
+          flex-direction: row;
+          gap: 16px;
+          align-items: center;
+        }
+        @media(width < $breakpoint-tablet) {
+          height: 100px;
+        }
+        @media(width < $breakpoint-phone) {
+          height: 75px;
+        }
 
         p {
-          @include typography-body-medium;
-          //display: grid;
-          //grid-template-columns: subgrid;
+          display: flex;
 
-          //place-items: left;
+          @include typography-body-medium;
           color: white;
-          //grid-column: 10 / span 3;
-          //align-items: center
+          @media(width < 1000px){
+            @include typography-body-small;
+            line-height: 1.2;
+          }
         }
 
       }
